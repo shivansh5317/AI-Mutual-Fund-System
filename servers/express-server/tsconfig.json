@@ -1,0 +1,15 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "./JS",
+    "baseUrl": ".",
+    "paths": {
+      "@repo/zod-schemas/*": ["../../packages/common/JS/*"],
+      "@app/*": ["./app/*"],
+      "@constants/*": ["./constants/*"],
+      "@server/*": ["./server/*"],
+      "@cluster/*": ["./clusterManager/*"],
+    }
+  },
+  "exclude": ["node_modules", "JS"]
+}

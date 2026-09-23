@@ -1,0 +1,19 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "./JS",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": false,
+    "baseUrl": ".",
+    "paths": {
+      "@conf/*": ["./conf/*"],
+      "@env/*": ["./environment/*"],
+      "@/types/*": ["./types/*"],
+      "@paths/*": ["./paths/*"],
+      "@constants/*": ["./constants/*"],
+      "@/class/*": ["../../backend/graphql-server/graphql/*"]
+    }
+  },
+  "exclude": ["node_modules", "JS"]
+}

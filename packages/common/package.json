@@ -1,0 +1,34 @@
+{
+  "name": "@repo/zod-schemas",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && pnpm dlx tsc-alias",
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "srajansaxena",
+  "license": "ISC",
+  "exports": {
+    "./types/*": "./JS/types/*.d.ts",
+    "./validated-events/*": "./JS/events/*",
+    "./environment/*": "./JS/environment/*",
+    "./helper/*": "./JS/helper/*",
+    "./constants/*": "./JS/constants/*",
+    "./paths/*": "./JS/paths/*",
+    "./conf/*": "./JS/conf/*",
+    "./queues/*": "./JS/queues/*"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.950.0",
+    "@repo/typescript-config": "workspace:*",
+    "@t3-oss/env-core": "^0.13.8",
+    "async": "^3.2.6",
+    "dotenv": "^17.2.2",
+    "lucide-react": "^0.544.0",
+    "react-hook-form": "^7.65.0",
+    "zod": "^4.1.12"
+  }
+}

@@ -1,0 +1,34 @@
+model MutualFund {
+  id              String   @id @default(cuid())
+  schemeName      String
+  minSip          Float
+  minLumpsum      Float
+  expenseRatio    Float
+  fundSizeCr      Float
+  fundAgeYr       Float
+  fundManager     String
+  sortino         Float?
+  alpha           Float?
+  sd              Float?
+  beta            Float?
+  sharpe          Float?
+  riskLevel       Int
+  amcName         String
+  rating          Int
+  category        String
+  subCategory     String
+  returns1yr      Float?
+  returns3yr      Float?
+  returns5yr      Float?
+  pineconeId      String?  @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Investment relations
+  investments     Investment[]
+
+  @@index([amcName])
+  @@index([category])
+  @@index([riskLevel])
+  @@index([rating])
+}

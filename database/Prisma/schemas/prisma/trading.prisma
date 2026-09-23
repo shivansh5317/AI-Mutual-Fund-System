@@ -1,0 +1,70 @@
+model TradingAccount {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  balance           Float    @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Position {
+  id                String   @id @default(cuid())
+  userId            String
+  symbol            String
+  type              String   // FUTURES, OPTIONS, etc.
+  quantity          Int
+  entryPrice        Float
+  currentPrice      Float
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id                String   @id @default(cuid())
+  userId            String
+  symbol            String
+  side              String   // BUY, SELL
+  quantity          Int
+  price             Float
+  status            String   // PENDING, EXECUTED, CANCELLED
+  type              String   // MARKET, LIMIT
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Watchlist {
+  id                String   @id @default(cuid())
+  userId            String
+  symbol            String
+  name              String
+  price             Float?
+  change            Float?
+  changePercent     Float?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, symbol])
+}
+
+model Investment {
+  id                String   @id @default(cuid())
+  userId            String
+  fundId            String
+  amount            Float
+  units             Float
+  nav               Float
+  type              String   // SIP, LUMPSUM
+  status            String   // ACTIVE, REDEEMED
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fund              MutualFund @relation(fields: [fundId], references: [id], onDelete: Cascade)
+}

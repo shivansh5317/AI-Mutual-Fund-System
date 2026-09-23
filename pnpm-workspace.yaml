@@ -1,0 +1,6 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  - "servers/**/*"
+  - "database/*"
+  - "services/**/*"

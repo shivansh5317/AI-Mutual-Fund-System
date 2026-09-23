@@ -1,0 +1,23 @@
+model User {
+  id                        String                      @id
+  email                     String                      @unique
+  createdAt                 DateTime                    @default(now())
+  updatedAt                 DateTime                    @updatedAt
+  firstName                 String
+  lastName                  String?
+  avatarURL                String?
+  
+  // Trading relations
+  positions                 Position[]
+  orders                    Order[]
+  watchlists                Watchlist[]
+  tradingAccount            TradingAccount?
+  
+  // Wallet relations
+  wallet                    Wallet?
+  transactions              Transaction[]
+  
+  // Investment relations
+  investments               Investment[]
+}
+
